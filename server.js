@@ -4,6 +4,7 @@ const session = require('express-session');
 const flash = require('express-flash');
 const {PORT = 8500} = process.env
 
+app.use(express.json());
 app.use(express.urlencoded({extended: false}))
 
 app.use(session({
@@ -12,13 +13,15 @@ app.use(session({
     saveUninitialized: false
 }))
 //
-const passport = require('./lib/passport')
+// const passport = require('./lib/passport')
+const passport = require('./lib/passportJWT')
 app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.session())
 // Keempat, setting flash
 app.use(flash())
 // Kelima, setting view engine
 app.set('view engine', 'ejs')
+
 
 // Keenam, setting router
 const router = require('./router/router')
