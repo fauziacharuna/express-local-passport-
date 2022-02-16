@@ -3,6 +3,7 @@ const passport = require("../lib/passport");
 
 const restrict = require('../middleware/restrict')
 const restrictJwt = require('../middleware/restrictJWT')
+const restrictSuperadmin = require('../middleware/restrictSuperadmin')
 
 
 const auth = require('../controllers/authController')
@@ -26,7 +27,7 @@ router.post('/login', passport.authenticate('local', {
 }))
 
 //Register
-router.post('/api/v1/auth/register', auth.registerJWT)
+router.post('/api/v1/auth/register', restrictSuperadmin, auth.registerJWT)
 //Login
 router.post('/api/v1/auth/login', auth.login)
 

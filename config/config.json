@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "admin",
-    "password": "Admin_1234!",
+    "username": "root",
+    "password": "Root_1234!",
     "database": "auth_local_strategy",
     "host": "127.0.0.1",
     "dialect": "mysql"
