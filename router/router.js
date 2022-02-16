@@ -16,7 +16,7 @@ router.get('/login',(req, res) => {
     res.render('login')
 })
 router.get('/whoami', restrict,auth.whoami)
-router.get('/api/v1/auth/whoami', restrictJwt, auth.whoamiJwt)
+router.get('/api/v1/auth/whoami',  restrictJwt, auth.whoamiJwt)
 
 router.post('/register', restrict, auth.register);
 router.post('/login', passport.authenticate('local', {
@@ -26,7 +26,7 @@ router.post('/login', passport.authenticate('local', {
 }))
 
 //Register
-router.post('/api/v1/auth/register', auth.register)
+router.post('/api/v1/auth/register', auth.registerJWT)
 //Login
 router.post('/api/v1/auth/login', auth.login)
 

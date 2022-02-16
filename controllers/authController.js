@@ -34,8 +34,27 @@ module.exports = {
             })
 
     },
-    whoamiJwt: (req, res)=> {
+    whoamiJwt: (req, res) => {
         const currentUser = req.user;
+        console.log(currentUser)
         res.json(currentUser)
+    },
+    registerJWT: async (req, res, next) => {
+        // const salt = "binar";
+        // const tokenJWT = req.headers.authorization;
+        // var tokenDecoded = await jwt.verify(tokenJWT, salt);
+        // console.log(tokenDecoded)
+        // if(tokenDecoded.isAdmin !== 1){
+        //   return res.status(401).json({
+        //     status: "unathorized"
+        //   })
+        // }
+        User.register(req.body)
+            .then(() => {
+                res.json({
+                    status: "success"
+                })
+            })
+            .catch((err) => next(err));
     }
 }
